@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         // Instantiate a story
         Story simpletext = new Story(textsimple);
 
-        // Redirect user to second activity with simple story
-        Intent activityTwo = new Intent(MainActivity.this, SecondActivity.class);
-        activityTwo.putExtra("story", (Serializable) simpletext);
-        startActivity(activityTwo);
+        // Redirect user to second activity
+        Intent activityChoose = new Intent(MainActivity.this, ChooseActivity.class);
+        activityChoose.putExtra("story", (Serializable) simpletext);
+        startActivity(activityChoose);
     }
 }

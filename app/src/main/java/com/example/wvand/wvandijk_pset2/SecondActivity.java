@@ -18,7 +18,6 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        buttonOK = findViewById(R.id.buttonOK);
 
         // Retrieve the instantiated simple story
         Intent intent = getIntent();
@@ -35,6 +34,8 @@ public class SecondActivity extends AppCompatActivity {
         editText.setHint(wordtype);
 
         // Set clicklistener on button in layout
+        Button buttonOK;
+        buttonOK = findViewById(R.id.buttonOK);
         buttonOK.setOnClickListener(new saveWords());
     }
 
