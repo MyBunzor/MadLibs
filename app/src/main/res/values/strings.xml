@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WvanDijk-pset2</string>
+    <string name="title_activity_third">ThirdActivity</string>
 </resources>
