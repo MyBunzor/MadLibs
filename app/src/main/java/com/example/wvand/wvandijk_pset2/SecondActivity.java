@@ -64,7 +64,7 @@ public class SecondActivity extends AppCompatActivity {
     // Class that saves word which is typed in when button is clicked
     private class saveWords implements Button.OnClickListener {
 
-        // Retrieve the instantiated simple story
+        // Retrieve the instantiated story
         Intent intent = getIntent();
         Story retrievedStory = (Story) intent.getSerializableExtra("story");
 

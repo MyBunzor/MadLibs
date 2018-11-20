@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Instantiate a textfile
-        textsimple = getResources().openRawResource(R.raw.madlib0_simple);
     }
 
     /* This method is connected to the button in the activity and will send
@@ -26,12 +23,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void getStarted(View view) {
 
-        // Instantiate a story
-        Story simpletext = new Story(textsimple);
-
         // Redirect user to second activity
         Intent activityChoose = new Intent(MainActivity.this, ChooseActivity.class);
-        activityChoose.putExtra("story", (Serializable) simpletext);
         startActivity(activityChoose);
     }
 }

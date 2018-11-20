@@ -17,7 +17,6 @@ public class ChooseActivity extends AppCompatActivity {
 
         // Get intent that was created in MainActivity
         Intent intent = getIntent();
-        intent.getSerializableExtra("story");
     }
 
     // Method that's called when simple button is clicked
