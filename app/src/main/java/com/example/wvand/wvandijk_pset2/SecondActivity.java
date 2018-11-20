@@ -10,16 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
+
     Button buttonOK ;
     EditText editText;
     TextView wordsleft;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        // Retrieve the instantiated simple story
+        // Retrieve the instantiated story
         Intent intent = getIntent();
         Story retrievedStory = (Story) intent.getSerializableExtra("story");
 
@@ -34,20 +36,37 @@ public class SecondActivity extends AppCompatActivity {
         editText.setHint(wordtype);
 
         // Set clicklistener on button in layout
-        Button buttonOK;
         buttonOK = findViewById(R.id.buttonOK);
         buttonOK.setOnClickListener(new saveWords());
+
+        // Make variable with how many words to fill left
+        int count1 = retrievedStory.getPlaceholderRemainingCount();
+
+        // Get SharedPreferences to store words in we update story with
+        editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+
+        editor.putInt("count", count1);
+        editor.apply();
+
+        // Check count to update it in oncreate (when rotated)
+        SharedPreferences prefscount = getSharedPreferences("settings", MODE_PRIVATE);
+        int savedCount = prefscount.getInt("count", count1);
+
+        // Update textview to let user know how many words left to fill
+        if (savedCount == 1) {
+            wordsleft.setText("There is " + savedCount + " word left!");
+        }
+        else {
+            wordsleft.setText("There are " + savedCount + " words left!");
+        }
     }
 
-    // Method that saves word which is typed in when button is clicked
+    // Class that saves word which is typed in when button is clicked
     private class saveWords implements Button.OnClickListener {
 
         // Retrieve the instantiated simple story
         Intent intent = getIntent();
         Story retrievedStory = (Story) intent.getSerializableExtra("story");
-
-        // Get SharedPreferences to store words in we update story with
-        SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
 
         @Override
         public void onClick(View v) {
@@ -58,6 +77,9 @@ public class SecondActivity extends AppCompatActivity {
 
             // Put word that user gave in string
             String typedin = editText.getText().toString();
+
+            // Get SharedPreferences to store words in we update story with
+            editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
 
             // Save typedin in SharedPreferences
             editor.putString("word", typedin);
@@ -75,14 +97,23 @@ public class SecondActivity extends AppCompatActivity {
             String wordtype = retrievedStory.getNextPlaceholder();
             editText.setHint(wordtype);
 
-            // Update textview to let user know how many words left to fill
+            // Make variable with how many words to fill left
             int count = retrievedStory.getPlaceholderRemainingCount();
 
-            if (count == 1) {
-                wordsleft.setText("There is " + count + " word left!");
+            // Save that count in SharedPreferences
+            editor.putInt("count", count);
+            editor.apply();
+
+            // Retrieve it from SharedPreferences
+            SharedPreferences prefscount = getSharedPreferences("settings", MODE_PRIVATE);
+            int savedCount = prefscount.getInt("count", 0);
+
+            // Update textview to let user know how many words left to fill
+            if (savedCount == 1) {
+                wordsleft.setText("There is " + savedCount + " word left!");
             }
             else {
-                wordsleft.setText("There are " + count + " words left!");
+                wordsleft.setText("There are " + savedCount + " words left!");
             }
 
             // Clear text in EditText after user submitted a word
@@ -97,13 +128,5 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(activityThree);
             }
         }
-
     }
-
-
-
-
-
-
-
 }

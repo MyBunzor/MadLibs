@@ -94,5 +94,4 @@ public class ChooseActivity extends AppCompatActivity {
         secondActivity.putExtra("story", simpletext);
         startActivity(secondActivity);
     }
-
 }

@@ -21,12 +21,17 @@ public class ThirdActivity extends AppCompatActivity {
         // Get story from second activity
         Intent intent = getIntent();
         String retrievedStory = intent.getStringExtra("fullstory");
-        System.out.println(retrievedStory);
 
         // Get access to textview in layout so we can change it
         TextView story = findViewById(R.id.textStory);
         story.setText(retrievedStory);
+    }
 
+    // Method attached to reset button, leading back to MainActivity
+    public void reSet(View view) {
+
+        Intent reset = new Intent(ThirdActivity.this, MainActivity.class);
+        startActivity(reset);
     }
 
 }
