@@ -6,5 +6,5 @@ words of his/her choosing.
 
 <img src="https://github.com/MyBunzor/MadLibs/blob/master/docs/MadLibs1.png" width="30%" height="30%"/>
 
-<img src="https://github.com/MyBunzor/MadLibs/blob/master/docs/MadLibs2.png" width="10%" height="10%"/>
+<img src="https://github.com/MyBunzor/MadLibs/blob/master/docs/MadLIbs2.png" width="30%" height="30%"/>
 
