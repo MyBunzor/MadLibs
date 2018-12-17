@@ -10,8 +10,6 @@ import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
-    InputStream textsimple;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

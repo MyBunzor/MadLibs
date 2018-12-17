@@ -14,9 +14,6 @@ public class ChooseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
-
-        // Get intent that was created in MainActivity
-        Intent intent = getIntent();
     }
 
     // Method that's called when simple button is clicked
